@@ -368,3 +368,270 @@ body{
 
 
 }
+/* =========================
+   MAIN MENU STYLE
+========================= */
+
+
+.menu-screen{
+
+    width:100vw;
+
+    height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    background:
+
+    linear-gradient(
+        rgba(0,0,0,0.65),
+        rgba(0,0,0,0.85)
+    ),
+
+    url("../assets/backgrounds/scene1.jpg");
+
+
+    background-size:cover;
+
+    background-position:center;
+
+
+    animation:menuFade 1.5s ease;
+
+
+}
+
+
+
+.game-logo{
+
+
+    font-size:70px;
+
+    letter-spacing:12px;
+
+
+    margin-bottom:60px;
+
+
+    color:white;
+
+
+    text-shadow:
+
+    0 0 10px #ffffff,
+    0 0 30px #7b7bff,
+    0 0 60px #4b4bff;
+
+
+    animation:
+    logoAppear 2s ease;
+
+
+}
+
+
+
+
+.menu-buttons{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:18px;
+
+
+    width:320px;
+
+
+}
+
+
+
+
+.menu-buttons button{
+
+
+    padding:18px;
+
+
+    border-radius:15px;
+
+
+    border:
+
+    1px solid rgba(255,255,255,0.4);
+
+
+    background:
+
+    rgba(0,0,0,0.55);
+
+
+    color:white;
+
+
+    font-size:22px;
+
+
+    cursor:pointer;
+
+
+    backdrop-filter:blur(10px);
+
+
+
+    transition:
+
+    0.3s;
+
+
+}
+
+
+
+.menu-buttons button:hover{
+
+
+    transform:scale(1.05);
+
+
+    background:
+
+    rgba(100,100,255,0.35);
+
+
+
+    box-shadow:
+
+    0 0 25px rgba(100,100,255,0.7);
+
+
+}
+
+
+
+
+/* =========================
+   NAME INPUT
+========================= */
+
+
+#player-name-input{
+
+
+    width:320px;
+
+
+    padding:18px;
+
+
+    margin-bottom:25px;
+
+
+    border-radius:15px;
+
+
+    border:
+
+    1px solid rgba(255,255,255,0.5);
+
+
+    background:
+
+    rgba(0,0,0,0.6);
+
+
+    color:white;
+
+
+    font-size:22px;
+
+
+    text-align:center;
+
+
+    outline:none;
+
+
+
+}
+
+
+
+#player-name-input:focus{
+
+
+    box-shadow:
+
+    0 0 25px rgba(120,120,255,0.8);
+
+
+}
+
+
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+
+@keyframes menuFade{
+
+
+    from{
+
+        opacity:0;
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+    }
+
+
+}
+
+
+
+@keyframes logoAppear{
+
+
+    from{
+
+        opacity:0;
+
+        transform:
+        translateY(-30px);
+
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:
+        translateY(0);
+
+
+    }
+
+
+}
