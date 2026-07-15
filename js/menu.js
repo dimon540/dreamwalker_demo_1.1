@@ -1,88 +1,109 @@
 // =========================
-// MAIN MENU SYSTEM
+// DREAMWALKER MAIN MENU
 // =========================
 
 
-console.log("Меню гри запущено.");
-
+const app = document.getElementById("app");
 
 
 
 // =========================
-// SHOW MAIN MENU
+// MAIN MENU
 // =========================
 
 
-function showMainMenu(){
+function showMenu(){
 
 
-    app.innerHTML = `
+app.innerHTML = `
 
 
-    <div class="menu-screen">
-
-
-        <h1 class="game-logo">
-            DREAMWALKER
-        </h1>
+<div class="menu-screen">
 
 
 
-        <div class="menu-buttons">
+<h1 class="game-logo">
+
+DREAMWALKER
+
+</h1>
 
 
 
-            <button onclick="newGame()">
-                Нова гра
-            </button>
+
+<div class="menu-buttons">
 
 
 
-            <button onclick="continueGame()">
-                Продовжити
-            </button>
+<button onclick="newGame()">
+
+Нова гра
+
+</button>
 
 
 
-            <button onclick="showChaptersMenu()">
-                Розділи
-            </button>
+
+<button onclick="continueGame()">
+
+Продовжити
+
+</button>
 
 
 
-            <button onclick="showSavesMenu()">
-                Збереження
-            </button>
+
+<button onclick="showChapters()">
+
+Розділи
+
+</button>
 
 
 
-            <button onclick="showSettingsMenu()">
-                Налаштування
-            </button>
+
+<button onclick="showSaves()">
+
+Збереження
+
+</button>
 
 
 
-            <button onclick="showGalleryMenu()">
-                Галерея
-            </button>
+
+<button onclick="showSettings()">
+
+Налаштування
+
+</button>
 
 
 
-            <button onclick="showAboutMenu()">
-                Про гру
-            </button>
+
+<button onclick="showGallery()">
+
+Галерея
+
+</button>
 
 
 
-        </div>
+
+<button onclick="showAbout()">
+
+Про гру
+
+</button>
 
 
 
-    </div>
+</div>
 
 
-    `;
+</div>
 
+
+`;
 
 }
 
@@ -95,65 +116,6 @@ function showMainMenu(){
 
 
 function newGame(){
-
-
-    app.innerHTML = `
-
-
-    <div class="menu-screen">
-
-
-        <h1 class="game-logo">
-            Як тебе звати?
-        </h1>
-
-
-
-        <input 
-        id="player-name-input"
-        placeholder="Введи ім'я..."
-        >
-
-
-
-        <button onclick="confirmName()">
-
-            Почати
-
-        </button>
-
-
-
-    </div>
-
-
-    `;
-
-
-}
-
-
-
-
-// =========================
-// CONFIRM NAME
-// =========================
-
-
-function confirmName(){
-
-
-    const input =
-    document.getElementById(
-        "player-name-input"
-    );
-
-
-
-    setPlayerName(
-        input.value
-    );
-
 
 
     startScene("scene1");
@@ -172,24 +134,114 @@ function confirmName(){
 function continueGame(){
 
 
-    if(hasSave(1)){
+app.innerHTML = `
 
 
-        loadGame(1);
+<div class="menu-screen">
 
 
-    }
+<h1 class="game-logo">
 
-    else{
+ПРОДОВЖИТИ
 
-
-        alert(
-            "Збережень поки немає."
-        );
+</h1>
 
 
-    }
 
+<div class="menu-buttons">
+
+
+<p>
+
+Збережень поки немає
+
+</p>
+
+
+
+<button onclick="showMenu()">
+
+← Назад
+
+</button>
+
+
+
+</div>
+
+
+</div>
+
+
+`;
+
+}
+
+
+
+
+// =========================
+// SAVES
+// =========================
+
+
+function showSaves(){
+
+
+app.innerHTML = `
+
+
+<div class="menu-screen">
+
+
+<h1 class="game-logo">
+
+ЗБЕРЕЖЕННЯ
+
+</h1>
+
+
+
+
+<div class="menu-buttons">
+
+
+<p>
+
+Слот 1 — порожньо
+
+</p>
+
+
+<p>
+
+Слот 2 — порожньо
+
+</p>
+
+
+<p>
+
+Слот 3 — порожньо
+
+</p>
+
+
+
+<button onclick="showMenu()">
+
+← Назад
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+`;
 
 }
 
@@ -198,89 +250,8 @@ function continueGame(){
 
 
 // =========================
-// PLACEHOLDERS
+// START
 // =========================
 
 
-function showChaptersMenu(){
-
-
-    alert(
-        "Розділи будуть доступні після створення сюжету."
-    );
-
-
-}
-
-
-
-function showSavesMenu(){
-
-
-    alert(
-        "Меню збережень у розробці."
-    );
-
-
-}
-
-
-
-function showSettingsMenu(){
-
-
-    alert(
-        "Налаштування у розробці."
-    );
-
-
-}
-
-
-
-function showGalleryMenu(){
-
-
-    alert(
-        "Галерея у розробці."
-    );
-
-
-}
-
-
-
-function showAboutMenu(){
-
-
-    app.innerHTML = `
-
-
-    <div class="menu-screen">
-
-
-        <h1>
-        DREAMWALKER
-        </h1>
-
-
-        <p>
-        Візуальна новела про мрії,
-        страхи та шлях до мети.
-        </p>
-
-
-
-        <button onclick="showMainMenu()">
-        ← Назад
-        </button>
-
-
-
-    </div>
-
-
-    `;
-
-
-}
+showMenu();
