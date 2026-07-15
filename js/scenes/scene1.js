@@ -270,3 +270,4 @@ text:
 
 
 };
+console.log("Сцени завантажені", window.scenes);
