@@ -6,69 +6,91 @@
 function showChapters(){
 
 
-    app.innerHTML = `
+app.innerHTML = `
 
 
-    <div class="menu-screen">
+<div class="menu-screen">
 
 
-        <h1 class="game-logo">
-            РОЗДІЛИ
-        </h1>
+<h1 class="game-logo">
 
+РОЗДІЛИ
 
-
-        <div class="menu-buttons">
-
-
-
-            <button onclick="startScene('scene1')">
-
-                🌙 Пролог
-
-            </button>
+</h1>
 
 
 
-            <button disabled>
-
-                🔒 Глава 1
-
-            </button>
+<div class="menu-buttons">
 
 
 
-            <button disabled>
+<button onclick="startPrologue()">
 
-                🔒 Глава 2
+🌙 Пролог
 
-            </button>
-
-
-
-            <button disabled>
-
-                🔒 Глава 3
-
-            </button>
+</button>
 
 
 
-            <button onclick="showMenu()">
+<button disabled>
 
-                ← Назад
+🔒 Глава 1
 
-            </button>
-
-
-
-        </div>
+</button>
 
 
-    </div>
+
+<button disabled>
+
+🔒 Глава 2
+
+</button>
 
 
-    `;
+
+<button disabled>
+
+🔒 Глава 3
+
+</button>
+
+
+
+
+<button onclick="showMenu()">
+
+← Назад
+
+</button>
+
+
+
+</div>
+
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+
+// =========================
+// START PROLOGUE
+// =========================
+
+
+function startPrologue(){
+
+
+    console.log("Запуск прологу");
+
+
+    startScene("scene1");
 
 
 }
