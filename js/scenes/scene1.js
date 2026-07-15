@@ -270,4 +270,10 @@ text:
 
 
 };
-console.log("Сцени завантажені", window.scenes);
+
+
+// DEBUG
+
+console.log("scene1.js завантажено");
+
+console.log(window.scenes);
