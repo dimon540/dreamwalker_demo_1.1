@@ -1,4 +1,9 @@
-const scenes = {
+// =========================
+// SCENES DATA
+// =========================
+
+
+window.scenes = {
 
 
 scene1: {
