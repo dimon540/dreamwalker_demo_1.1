@@ -1,22 +1,13 @@
 // =========================
-// DREAMWALKER GAME ENGINE
+// GAME ENGINE
 // =========================
 
 
-console.log(
-    "Dreamwalker Engine 1.1 запущено."
-);
+console.log("Двигун гри запущено.");
 
-
-
-// =========================
-// GAME STATE
-// =========================
 
 
 let currentScene = null;
-
-let currentSceneName = "";
 
 let currentStep = 0;
 
@@ -26,21 +17,9 @@ let typingTimer;
 
 
 
-// =========================
-// START GAME
-// =========================
+let sceneMusic = null;
 
-
-function startGame(){
-
-
-    createGameUI();
-
-
-    startScene("scene1");
-
-
-}
+let citySound = null;
 
 
 
@@ -55,7 +34,22 @@ function startScene(sceneName){
 
 
 
-    const scene = scenes[sceneName];
+    if(!window.scenes){
+
+
+        console.error(
+            "Система сцен не завантажена"
+        );
+
+
+        return;
+
+
+    }
+
+
+
+    const scene = window.scenes[sceneName];
 
 
 
@@ -63,8 +57,11 @@ function startScene(sceneName){
 
 
         console.error(
+
             "Сцена не знайдена:",
+
             sceneName
+
         );
 
 
@@ -77,7 +74,6 @@ function startScene(sceneName){
 
     currentScene = scene;
 
-    currentSceneName = sceneName;
 
     currentStep = 0;
 
@@ -96,6 +92,9 @@ function startScene(sceneName){
 
 
 
+
+
+
 // =========================
 // SHOW STEP
 // =========================
@@ -105,18 +104,18 @@ function showStep(){
 
 
 
-    clearInterval(
-        typingTimer
-    );
+    clearInterval(typingTimer);
 
 
 
     const step =
+
     currentScene.steps[currentStep];
 
 
 
     app.innerHTML = `
+
 
     <div class="game-screen">
 
@@ -128,40 +127,39 @@ function showStep(){
         <div id="dialogue-box">
 
 
-        ${
-            step.name
-            ?
-            `
-            <div class="speaker">
             ${
-                step.name === true
-                ?
-                player.name
-                :
                 step.name
+                ?
+                `
+                <div class="speaker">
+
+                ${step.name}
+
+                </div>
+                `
+                :
+                ""
             }
-            </div>
-            `
-            :
-            ""
-        }
 
 
 
-        <div id="dialogue">
-        </div>
-
+            <div id="dialogue"></div>
 
 
         </div>
 
 
 
-        <button 
+
+        <button
+
         class="game-button"
+
         onclick="nextStep()">
 
+
         Далі
+
 
         </button>
 
@@ -169,51 +167,51 @@ function showStep(){
 
     </div>
 
+
     `;
 
 
 
-    const background =
-    document.getElementById(
+
+    const bg = document.getElementById(
         "background"
     );
 
 
 
-    background.style.backgroundImage =
+    bg.style.backgroundImage =
 
     `url("${step.background}")`;
+
 
 
 
     if(step.camera === "close"){
 
 
-        background.className =
-        "camera-close";
+        bg.classList.add(
+            "camera-close"
+        );
 
 
     }
+
 
 
     if(step.camera === "far"){
 
 
-        background.className =
-        "camera-far";
+        bg.classList.add(
+            "camera-far"
+        );
 
 
     }
 
 
 
-    typeText(
-        step.text
-    );
 
-
-
-    addToHistory(step);
+    typeText(step.text);
 
 
 
@@ -222,66 +220,67 @@ function showStep(){
 
 
 
+
+
+
 // =========================
-// TEXT SYSTEM
+// TEXT TYPING
 // =========================
 
 
 function typeText(text){
 
 
-    const box =
-    document.getElementById(
+
+    const box = document.getElementById(
         "dialogue"
     );
 
 
 
-    box.innerHTML = "";
+    box.innerHTML="";
 
 
 
-    let index = 0;
+    let index=0;
 
 
 
-    typing = true;
+    typing=true;
 
 
 
-    typingTimer =
-    setInterval(()=>{
+
+    typingTimer=setInterval(()=>{
 
 
         box.innerHTML += text[index];
 
-
         index++;
+
 
 
 
         if(index >= text.length){
 
 
-            clearInterval(
-                typingTimer
-            );
+            clearInterval(typingTimer);
 
 
-            typing = false;
+            typing=false;
 
 
         }
 
 
 
-    },
-    
-    settings.textSpeed);
+    },60);
 
 
 
 }
+
+
 
 
 
@@ -300,9 +299,7 @@ function nextStep(){
 
 
 
-        clearInterval(
-            typingTimer
-        );
+        clearInterval(typingTimer);
 
 
 
@@ -314,8 +311,7 @@ function nextStep(){
 
 
 
-        typing = false;
-
+        typing=false;
 
 
         return;
@@ -330,13 +326,8 @@ function nextStep(){
 
 
 
-    if(
 
-    currentStep <
-
-    currentScene.steps.length
-
-    ){
+    if(currentStep < currentScene.steps.length){
 
 
         showStep();
@@ -347,12 +338,10 @@ function nextStep(){
     else{
 
 
-        stopAudio();
+        stopSceneAudio();
 
 
-        console.log(
-            "Сцена завершена"
-        );
+        showMenu();
 
 
     }
@@ -365,15 +354,112 @@ function nextStep(){
 
 
 
+
+
 // =========================
-// START
+// AUDIO
 // =========================
 
 
-window.onload = function(){
+function playSceneAudio(sceneName){
 
 
-    showMainMenu();
+
+    stopSceneAudio();
 
 
-};
+
+    if(sceneName==="scene1"){
+
+
+
+        sceneMusic = new Audio(
+
+        "assets/music/scene1.mp3"
+
+        );
+
+
+
+        sceneMusic.loop=true;
+
+
+        sceneMusic.volume=0.7;
+
+
+
+
+        citySound = new Audio(
+
+        "assets/sounds/city.mp3"
+
+        );
+
+
+
+        citySound.loop=true;
+
+
+        citySound.volume=0.25;
+
+
+
+
+        sceneMusic.play()
+        .catch(()=>{});
+
+
+
+        citySound.play()
+        .catch(()=>{});
+
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+// =========================
+// STOP AUDIO
+// =========================
+
+
+function stopSceneAudio(){
+
+
+
+    if(sceneMusic){
+
+
+        sceneMusic.pause();
+
+
+        sceneMusic.currentTime=0;
+
+
+    }
+
+
+
+
+    if(citySound){
+
+
+        citySound.pause();
+
+
+        citySound.currentTime=0;
+
+
+    }
+
+
+
+}
