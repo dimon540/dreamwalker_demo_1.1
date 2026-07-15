@@ -19,7 +19,7 @@ let settings = {
     sound:80,
 
 
-    textSpeed:60,
+    textSpeed:15,
 
 
     language:"Українська",
