@@ -373,7 +373,7 @@ function nextStep(){
 window.onload = function(){
 
 
-    startGame();
+    showMainMenu();
 
 
 };
