@@ -107,10 +107,11 @@ body{
 
 #dialogue-box{
 
+
     position:absolute;
 
 
-    bottom:8%;
+    bottom:6%;
 
 
     left:50%;
@@ -120,35 +121,57 @@ body{
 
 
 
-    width:80%;
-
-
-    max-width:900px;
+    width:85%;
 
 
 
-    padding:25px;
+    max-width:1000px;
+
+
+
+    min-height:180px;
+
+
+
+    padding:35px;
 
 
 
     background:
 
-    rgba(0,0,0,0.65);
+
+    rgba(0,0,0,0.72);
 
 
 
     border:
 
+
     2px solid rgba(255,255,255,0.3);
 
 
 
-    border-radius:20px;
+    border-radius:25px;
 
 
 
-    backdrop-filter:blur(8px);
+    backdrop-filter:blur(10px);
 
+
+
+    display:flex;
+
+
+
+    flex-direction:column;
+
+
+
+    justify-content:center;
+
+
+
+}
 
 }
 
