@@ -87,10 +87,29 @@ app.innerHTML = `
 function startPrologue(){
 
 
-    console.log("Запуск прологу");
+    console.log("Кнопка Пролог натиснута");
 
 
-    startScene("scene1");
+    if(typeof startScene === "function"){
+
+
+        console.log("startScene знайдена");
+
+
+        startScene("scene1");
+
+
+    }
+
+    else{
+
+
+        console.error(
+            "startScene НЕ знайдена"
+        );
+
+
+    }
 
 
 }
